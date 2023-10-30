@@ -8,6 +8,7 @@ defmodule LetsChatWeb.RoomLive.Index do
     {:ok, assign(socket, room_id: room_id, form: to_form(%{}, as: :message), topic: topic, messages: ["A user joined chat"])}
   end
 
+  @impl true
   def handle_event("submit_message", %{"message" => message}, socket) do
     message = Map.values(message)
     updated_messages = socket.assigns.messages ++ [message]
@@ -15,7 +16,8 @@ defmodule LetsChatWeb.RoomLive.Index do
     {:noreply, assign(socket, messages: updated_messages)}
   end
 
-  def handle_info(%{event: "new_message", payload: message}, socket) do
+  @impl true
+  def handle_info(%{event: "new_message", payload: _message}, socket) do
     {:noreply, socket}
   end
 end
