@@ -1,0 +1,9 @@
+<.header>
+  Create New Room
+</.header>
+
+<.form for={@form} class="mt-8" phx-change="validate" phx-submit="save">
+  <.input field={@form[:name]} type="text" label="Name" />
+  <div class="border"> </div>
+  <.button class="mt-8" phx-disable-with="Saving">Save</.button>
+</.form>

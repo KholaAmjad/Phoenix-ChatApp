@@ -7,8 +7,11 @@ defmodule LetsChatWeb.PageLive.Index do
   end
 
   @impl true
+  def handle_event("create_room", _params, socket) do
+    {:noreply, push_redirect(socket, to: "/room/new")}
+  end
+
   def handle_event("join_room", _params, socket) do
-    random_slug = "/" <> MnemonicSlugs.generate_slug(3)
-    {:noreply, push_redirect(socket, to: random_slug)}
+    {:noreply, push_redirect(socket, to: "/rooms")}
   end
 end

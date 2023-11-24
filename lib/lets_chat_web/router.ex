@@ -18,7 +18,9 @@ defmodule LetsChatWeb.Router do
     pipe_through :browser
 
     live "/", PageLive.Index, :index
-    live "/:id", RoomLive.Index, :index
+    live "/rooms", RoomLive.Rooms, :index
+    live "/room/new", PageLive.New, :new
+    live "/room/:id", RoomLive.Index, :index
   end
 
   # Other scopes may use custom stacks.
